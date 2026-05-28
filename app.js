@@ -14,7 +14,45 @@ const themeButton = document.getElementById("toggleTheme");
 
 let transactions =
 JSON.parse(localStorage.getItem("transactions")) || [];
+let customCategories =
+JSON.parse(
+localStorage.getItem("customCategories")
+) || [];
+function loadCustomCategories(){
 
+    customCategories.forEach(category=>{
+
+        const option =
+        document.createElement("option");
+
+        option.textContent = category;
+        option.value = category;
+
+        categorySelect.insertBefore(
+            option,
+            categorySelect.lastElementChild
+        );
+
+    });
+
+}
+categorySelect.addEventListener(
+"change",
+()=>{
+
+    if(categorySelect.value === "nueva"){
+
+        newCategoryInput.style.display =
+        "block";
+
+    }else{
+
+        newCategoryInput.style.display =
+        "none";
+
+    }
+
+});
 function saveData(){
     localStorage.setItem(
         "transactions",
@@ -108,22 +146,34 @@ form.addEventListener("submit",(e)=>{
     const type =
         document.getElementById("type").value;
 
-    let category =
-document.getElementById("category").value;
+    let category = categorySelect.value;
 
 if(category === "nueva"){
-    const nuevaCategoria = prompt(
-        "Nombre de la nueva categoría:"
-    );
+
+    const nuevaCategoria =
+    newCategoryInput.value.trim();
+
+    if(!nuevaCategoria){
+
+        alert(
+        "Escribe el nombre de la categoría"
+        );
+
+        return;
+    }
+
+    category = nuevaCategoria;
 
     if(
-        nuevaCategoria &&
-        nuevaCategoria.trim() !== ""
+    !customCategories.includes(category)
     ){
-        category = nuevaCategoria.trim();
 
-        const select =
-        document.getElementById("category");
+        customCategories.push(category);
+
+        localStorage.setItem(
+        "customCategories",
+        JSON.stringify(customCategories)
+        );
 
         const option =
         document.createElement("option");
@@ -131,17 +181,14 @@ if(category === "nueva"){
         option.textContent = category;
         option.value = category;
 
-        select.insertBefore(
-            option,
-            select.lastElementChild
+        categorySelect.insertBefore(
+        option,
+        categorySelect.lastElementChild
         );
 
-        select.value = category;
-    }else{
-        return;
     }
-}
 
+}
     transactions.push({
         description,
         amount,
