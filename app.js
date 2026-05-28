@@ -199,6 +199,7 @@ if(category === "nueva"){
     saveData();
     updateUI();
     form.reset();
+    newCategoryInput.style.display = "none";
 
 });
 
@@ -218,3 +219,4 @@ themeButton.addEventListener("click",()=>{
 });
 
 updateUI();
+loadCustomCategories();
