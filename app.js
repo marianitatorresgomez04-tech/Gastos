@@ -103,8 +103,39 @@ form.addEventListener("submit",(e)=>{
     const type =
         document.getElementById("type").value;
 
-    const category =
-        document.getElementById("category").value;
+    let category =
+document.getElementById("category").value;
+
+if(category === "nueva"){
+    const nuevaCategoria = prompt(
+        "Nombre de la nueva categoría:"
+    );
+
+    if(
+        nuevaCategoria &&
+        nuevaCategoria.trim() !== ""
+    ){
+        category = nuevaCategoria.trim();
+
+        const select =
+        document.getElementById("category");
+
+        const option =
+        document.createElement("option");
+
+        option.textContent = category;
+        option.value = category;
+
+        select.insertBefore(
+            option,
+            select.lastElementChild
+        );
+
+        select.value = category;
+    }else{
+        return;
+    }
+}
 
     transactions.push({
         description,
