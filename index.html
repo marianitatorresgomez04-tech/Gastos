@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Mis Gastos</title>
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+
+    <meta name="theme-color" content="#111827">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <header class="header">
+            <h1>💰 Mis Gastos</h1>
+            <button id="toggleTheme">
+                🌙
+            </button>
+        </header>
+
+        <section class="balance-card">
+            <h2>Balance Actual</h2>
+            <p id="balance">$0</p>
+        </section>
+
+        <section class="summary">
+
+            <div class="card income">
+                <h3>Ingresos</h3>
+                <span id="incomeTotal">$0</span>
+            </div>
+
+            <div class="card expense">
+                <h3>Gastos</h3>
+                <span id="expenseTotal">$0</span>
+            </div>
+
+        </section>
+
+        <section class="form-section">
+
+            <h2>Agregar Movimiento</h2>
+
+            <form id="transactionForm">
+
+                <input
+                    type="text"
+                    id="description"
+                    placeholder="Descripción"
+                    required
+                >
+
+                <input
+                    type="number"
+                    id="amount"
+                    placeholder="Valor"
+                    required
+                >
+
+                <select id="type">
+                    <option value="income">
+                        Ingreso
+                    </option>
+
+                    <option value="expense">
+                        Gasto
+                    </option>
+                </select>
+
+                <select id="category">
+
+                    <option>Comida</option>
+                    <option>Transporte</option>
+                    <option>Hogar</option>
+                    <option>Salud</option>
+                    <option>Mascotas</option>
+                    <option>Entretenimiento</option>
+                    <option>Compras</option>
+                    <option>Educación</option>
+                    <option>Otros</option>
+
+                </select>
+
+                <button type="submit">
+                    Guardar
+                </button>
+
+            </form>
+
+        </section>
+
+        <section class="transactions">
+
+            <h2>Movimientos</h2>
+
+            <ul id="transactionList"></ul>
+
+        </section>
+
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
