@@ -1,5 +1,10 @@
 const form = document.getElementById("transactionForm");
 const transactionList = document.getElementById("transactionList");
+const categorySelect =
+document.getElementById("category");
+
+const newCategoryInput =
+document.getElementById("newCategory");
 
 const balance = document.getElementById("balance");
 const incomeTotal = document.getElementById("incomeTotal");
