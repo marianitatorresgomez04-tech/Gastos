@@ -1,6 +1,6 @@
 :root{
     --bg:#0f172a;
-    --card:#1e293b;
+    --card:#284b85;
     --text:#ffffff;
     --green:#22c55e;
     --red:#ef4444;
@@ -46,7 +46,7 @@ body{
 }
 
 .balance-card{
-    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    background:linear-gradient(135deg,#2563eb,#3b82f6);
     border-radius:20px;
     padding:25px;
     margin-bottom:20px;
